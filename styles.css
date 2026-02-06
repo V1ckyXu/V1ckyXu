@@ -1,0 +1,372 @@
+/* Minimalist Elegant Stylesheet */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --link-color: #0066cc;
+  --accent-color: #f4f4f4;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --max-width: 90%;
+}
+
+body {
+  margin: 10;
+  padding: 10;
+  font-family: var(--font-family);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+}
+
+/* --- Top Banner --- */
+.hero-banner {
+  width: 100%;
+  height: 38px;
+  background-image: url('plane.png');
+  background-repeat: repeat;
+  background-size: 70px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 20px; /* Space between banner and content */
+    /* Diffused/Soft edges effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
+  
+  /* Soft fade at the bottom */
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* --- The Side-by-Side Layout --- */
+/* Layout: Text Left (1fr), Portrait Right (250px) */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 250px; /* */
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Right Panel (Portrait) - Clean Edges */
+.right-panel .img-wrapper {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 10px;
+}
+
+.side-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0.78; 
+    transition: opacity 0.3s ease;
+}
+
+/* Publication GIF - Diffused Edges */
+.img-wrapper-diffused {
+    position: relative;
+    display: grid; /* Fits container exactly to GIF dimensions */
+    width: fit-content;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.img-wrapper-diffused::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Inset shadow creates the diffusion effect */
+    box-shadow: inset 0 0 8px 5px white; 
+    border-radius: 23px;
+    pointer-events: none;
+}
+
+.pub-img {
+    display: block;
+    max-width: 170px;
+    height: auto;
+    flex: 0 0 170px; 
+}
+
+/* CV icon */
+.cv-button-wrapper {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 5px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  
+  /* Initial state: subtle shadow */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-button-content {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  align-items: center;  /* This is the magic line for vertical centering */
+  justify-content: center;
+  gap: 5px;
+  height: 40px;        /* Fixed height for all buttons */
+  line-height: 1;      /* Prevents text from pushing the container height */
+  padding: 0 15px;
+  
+  background-color: var(--accent-color);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.cv-button-content img {
+  /* This ensures the image doesn't have any hidden margins */
+  margin: 0;
+  display: block; 
+  width: 18px;
+  height: 18px;
+}
+
+.cv-button-content .text {
+  /* Ensures text sits perfectly level with the icon */
+  display: flex;
+  align-items: center;
+  /* SET THE FONT SIZE HERE */
+  font-size: 0.75rem;   /* Smaller than your 0.85rem paragraph text */
+  font-weight: 500;     /* Makes the smaller text easier to read */
+  color: #000;          /* Matches your black text preference */
+}
+}
+/* Specific style for ORCID to match their branding */
+.orcid-link .cv-button-content {
+  border: 1px solid #A6CE39;
+}
+
+.orcid-link:hover .cv-button-content {
+  background-color: #A6CE39;
+  color: white; /* Text turns white when hovering over the green background */
+}
+
+/* publication section */
+.publication-entry {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.pub-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pub-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Aligns text to the left within this block */
+}
+
+.pub-content h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.4rem;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  /* Add padding to the container so shadows aren't cut off by the parent edges */
+  padding: 5px; 
+}
+
+.cv-button-content {
+  /* Set background to white or near-white */
+  background-color: #ffffff; 
+  
+  /* Use a very light grey for the border */
+  border: 1px solid #eeeeee; 
+  
+  /* Ensure the text is dark enough to read on white */
+  color: #333333; 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 32px;
+  padding: 0 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.cv-button-wrapper {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 8px;
+  
+  /* Soften the shadow to match the lighter theme */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.cv-button-wrapper:hover {
+  transform: translateY(-2px);
+  /* Hover shadow remains subtle but visible */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.cv-button-wrapper:hover .cv-button-content {
+  /* Optional: make the border slightly darker on hover for feedback */
+  border-color: #dddddd;
+  background-color: #fafafa;
+}
+
+/* Adjusting your existing button style for smaller publication links */
+.pub-content .cv-button-content {
+    padding: 15px 15px;
+    height: 8px;
+    font-size: 0.75rem;
+    border-radius: 5px;
+}
+
+.pub-content .authors, 
+.pub-content .journal {
+    font-size: 0.80rem;
+    color: #555; /* Optional: slight grey to make it look even more refined */
+}
+
+/* Ensures the title stays slightly larger but still scales down */
+.pub-content h3 {
+    font-size: 1rem; 
+    margin-bottom: 2px;
+}
+
+
+main {
+  text-align: left;
+  line-height: 1.8;
+}
+
+
+/* Container: Perfectly fits GIF dimensions with no gaps */
+.pub-image .img-wrapper {
+  display: grid;         /* Forces container to match image size */
+  max-width: 170px;      /* Limits size for the publication list */
+  border-radius: 20px;   /* Clean rounded edges */
+  overflow: hidden;      /* Clips GIF to the curves */
+
+  
+}
+
+/* The GIF: No animation or scale changes */
+.pub-img {
+  display: block;        /* Removes bottom 'ghost' spacing */
+  width: 100%;           /* Fills the fit-content wrapper */
+  height: auto;          /* Maintains original aspect ratio */
+  border-radius: 20px;   /* Matches wrapper exactly */
+  margin: 0;
+}
+
+/* Ensure the parent row aligns them cleanly */
+.publication-entry {
+  display: flex;         /* Horizontal layout */
+  gap: 10px;             /* Space between GIF and text */
+  align-items: flex-start; /* Aligns both to the top */
+}
+
+/* Main */
+
+main img {
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+p {
+    color: black;        /* Ensures all paragraphs are black */
+    font-size: 0.85rem;  /* Sets the smaller size globally */
+    line-height: 1.6;    /* Improves readability */
+    margin-bottom: 20px; /* Provides consistent spacing */
+}
+
+h1 {
+  /* Common desktop size is 2rem to 3rem */
+  font-size: 2.5rem; 
+  
+  /* Optional: Adjust weight and spacing for a cleaner look */
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+h2 {
+    margin-top: 80px !important;  /* Increase this value for a larger gap */
+    margin-bottom: 5px; /* Spacing between the title and the first publication */
+    font-size: 1.4rem;
+    color: #000;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-top: 1.5em;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1em;
+  margin-left: 0;
+  color: #666;
+}
+
+pre, code {
+  background-color: var(--accent-color);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5em;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.full-width-img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover; /* Prevents the image from looking "squashed" */
+  display: block;
+}
